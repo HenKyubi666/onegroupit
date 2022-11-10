@@ -15,10 +15,6 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json("on /");
-});
-
 app.use("/api/products", productsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
