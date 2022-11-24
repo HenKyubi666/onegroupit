@@ -1,13 +1,14 @@
 import Product from "../models/Product";
 
 export const createProduct = async (req, res) => {
-  const { name, category, price, imgUrl } = req.body;
+  const { name, price, imgUrl, calification, administratorId } = req.body;
 
   const newProduct = new Product({
     name,
-    category,
     price,
     imgUrl,
+    calification,
+    administratorId,
   });
 
   const productSaved = await newProduct.save();
@@ -35,6 +36,7 @@ export const updateProductById = async (req, res) => {
   );
   res.json(updateProduct);
 };
+
 export const deleteProductById = async (req, res) => {
   await Product.findByIdAndDelete(req.params.productId);
   res.status(204).json();

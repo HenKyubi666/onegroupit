@@ -3,9 +3,10 @@ import { Schema, model } from "mongoose";
 const productSchema = new Schema(
   {
     name: String,
-    category: String,
     price: Number,
     imgUrl: String,
+    calification: Number,
+    administratorId: String,
   },
   {
     timestamps: true,
