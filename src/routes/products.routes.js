@@ -4,11 +4,7 @@ const router = Router();
 import * as productsController from "../controllers/products.controller";
 import { authJwt } from "../middlewares";
 
-router.post(
-  "/",
-  [authJwt.verifyToken],
-  productsController.createProduct
-);
+router.post("/", [authJwt.verifyToken], productsController.createProduct);
 
 router.get("/", productsController.getProducts);
 
