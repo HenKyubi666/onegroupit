@@ -5,8 +5,13 @@ const productSchema = new Schema(
     name: String,
     price: Number,
     imgUrl: String,
+    dateOfExpiration: Date,
     calification: Number,
-    administratorId: String,
+    userId: {
+      ref: "User",
+      type: Schema.Types.ObjectId,
+      require: true,
+    },
   },
   {
     timestamps: true,

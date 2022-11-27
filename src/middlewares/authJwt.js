@@ -1,21 +1,20 @@
 import jwt from "jsonwebtoken";
-import {SECRET} from "../config";
+import { SECRET } from "../config";
 import User from "../models/User";
 import Role from "../models/Role";
 
 export const verifyToken = async (req, res, next) => {
   try {
     const token = req.headers["x-access-token"];
-    // console.log(token);
+
     if (!token) return res.status(403).json({ message: "No token provided" });
 
     const decoded = jwt.verify(token, SECRET);
 
-    req.userId = decoded.id;
+    req.body.userId = decoded.id;
 
-    // console.log(decoded);
+    const user = await User.findById(req.body.userId, { password: 0 });
 
-    const user = await User.findById(decoded.id, { password: 0 });
     if (!user) return res.status(404).json({ message: "User not exist" });
 
     next();
@@ -51,4 +50,3 @@ export const isAdmin = async (req, res, next) => {
 
   return res.status(403).json("Admin role is required");
 };
-

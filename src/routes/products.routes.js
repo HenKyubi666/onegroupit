@@ -6,7 +6,8 @@ import { authJwt } from "../middlewares";
 
 router.post(
   "/",
-  [authJwt.verifyToken, authJwt.isAdmin],
+  // [authJwt.verifyToken, authJwt.isAdmin],
+  [authJwt.verifyToken],
   productsController.createProduct
 );
 

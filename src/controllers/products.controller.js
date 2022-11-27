@@ -1,19 +1,28 @@
 import Product from "../models/Product";
 
 export const createProduct = async (req, res) => {
-  const { name, price, imgUrl, calification, administratorId } = req.body;
+  try {
+    const { name, price, imgUrl, dateOfExpiration, calification, userId } =
+      req.body;
 
-  const newProduct = new Product({
-    name,
-    price,
-    imgUrl,
-    calification,
-    administratorId,
-  });
+    console.log(req.body);
 
-  const productSaved = await newProduct.save();
+    const newProduct = new Product({
+      name,
+      price,
+      imgUrl,
+      dateOfExpiration,
+      calification,
+      userId,
+    });
 
-  res.status(201).json(productSaved);
+    await newProduct.save();
+
+    // res.status(201).json(productSaved);
+    res.status(201).json({ message: "Success" });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
 };
 
 export const getProducts = async (req, res) => {
