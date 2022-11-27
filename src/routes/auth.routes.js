@@ -6,7 +6,7 @@ import { verifySignUp } from "../middlewares";
 
 router.post(
   "/signup",
-  [verifySignUp.checkDuplicateUsernameOrEmail, verifySignUp.checkRolesExisted],
+  [verifySignUp.checkDuplicateUsernameOrEmail],
   authController.signUp
 );
 

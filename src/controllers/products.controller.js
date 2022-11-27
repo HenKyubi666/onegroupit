@@ -5,8 +5,6 @@ export const createProduct = async (req, res) => {
     const { name, price, imgUrl, dateOfExpiration, calification, userId } =
       req.body;
 
-    console.log(req.body);
-
     const newProduct = new Product({
       name,
       price,
@@ -18,7 +16,6 @@ export const createProduct = async (req, res) => {
 
     await newProduct.save();
 
-    // res.status(201).json(productSaved);
     res.status(201).json({ message: "Success" });
   } catch (error) {
     res.status(500).json({ message: error });

@@ -17,13 +17,13 @@ router.get("/:productId", productsController.getProductById);
 
 router.put(
   "/:productId",
-  [authJwt.verifyToken, authJwt.isAdmin],
+  [authJwt.verifyToken],
   productsController.updateProductById
 );
 
 router.delete(
   "/:productId",
-  [authJwt.verifyToken, authJwt.isAdmin],
+  [authJwt.verifyToken],
   productsController.deleteProductById
 );
 

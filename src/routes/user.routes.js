@@ -2,11 +2,11 @@ import { Router } from "express";
 const router = Router();
 
 import * as userController from "../controllers/user.controller";
-import { authJwt, verifySignUp } from "../middlewares";
+import { authJwt } from "../middlewares";
 
 router.post(
   "/",
-  [authJwt.verifyToken, authJwt.isAdmin, verifySignUp.checkRolesExisted],
+  [authJwt.verifyToken],
   userController.createUser
 );
 
