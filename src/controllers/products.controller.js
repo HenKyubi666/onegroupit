@@ -23,8 +23,13 @@ export const createProduct = async (req, res) => {
 };
 
 export const getProducts = async (req, res) => {
-  const products = await Product.find();
-  res.json(products);
+  try {
+    const { userId } = req.body;
+    const products = await Product.find({ userId });
+    res.json({ message: "Success", productsData: products });
+  } catch (error) {
+    res.json({ message: error });
+  }
 };
 
 export const getProductById = async (req, res) => {

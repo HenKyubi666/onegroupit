@@ -6,7 +6,7 @@ import { authJwt } from "../middlewares";
 
 router.post("/", [authJwt.verifyToken], productsController.createProduct);
 
-router.get("/", productsController.getProducts);
+router.get("/", [authJwt.verifyToken], productsController.getProducts);
 
 router.get("/:productId", productsController.getProductById);
 
