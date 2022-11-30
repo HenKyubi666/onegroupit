@@ -38,17 +38,25 @@ export const getProductById = async (req, res) => {
 };
 
 export const updateProductById = async (req, res) => {
-  const updateProduct = await Product.findByIdAndUpdate(
-    req.params.productId,
-    req.body,
-    {
-      new: true,
-    }
-  );
-  res.json(updateProduct);
+  try {
+    const updateProduct = await Product.findByIdAndUpdate(
+      req.params.productId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.json({ message: "Success", productData: updateProduct });
+  } catch (error) {
+    res.json({ message: error });
+  }
 };
 
 export const deleteProductById = async (req, res) => {
-  await Product.findByIdAndDelete(req.params.productId);
-  res.status(204).json();
+  try {
+    await Product.findByIdAndDelete(req.params.productId);
+    res.status(200).json({ message: "Success" });
+  } catch (error) {
+    res.json({ message: error });
+  }
 };
