@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import cors from 'cors'
+import cors from "cors";
 
 import productsRoutes from "./routes/products.routes";
 import authRoutes from "./routes/auth.routes";
@@ -14,7 +14,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://master--onegroupit-frontend.netlify.app",
+    origin:
+      "https://master--onegroupit-frontend.netlify.app" |
+      "http://localhost:3000/",
+    credentials: true,
   })
 );
 
