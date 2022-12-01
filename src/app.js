@@ -14,10 +14,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "https://master--onegroupit-frontend.netlify.app",
-      "http://localhost:3000",
-    ],
+    origin:
+      "https://master--onegroupit-frontend.netlify.app, http://localhost:3000",
     credentials: true,
   })
 );
