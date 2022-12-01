@@ -12,7 +12,11 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://master--onegroupit-frontend.netlify.app",
+  })
+);
 
 app.use("/api/products", productsRoutes);
 app.use("/api/auth", authRoutes);
